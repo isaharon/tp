@@ -15,9 +15,9 @@ public class ListModuleCommand extends Command {
         requireNonNull(modules);
         String listMessage = MESSAGE_LIST;
         for (String module : modules.getModules()) {
-            int moduleNumber = modules.getModules().indexOf(module);
+            int moduleNumber = modules.getModules().indexOf(module) + 1;
             listMessage += "\n";
-            listMessage += String.format(Messages.MESSAGE_LIST_ITEMS, moduleNumber + 1, module);
+            listMessage += String.format(Messages.MESSAGE_LIST_ITEMS, moduleNumber, module);
         }
         ui.printMessage(listMessage);
     }
