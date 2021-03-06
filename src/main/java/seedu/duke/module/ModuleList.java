@@ -8,7 +8,7 @@ import java.util.Collections;
 public class ModuleList {
 
     private ArrayList<String> modules;
-    public static Module selectedModule;
+    private static Module selectedModule;
 
     public ModuleList() {
         this.modules = new ArrayList<>();
