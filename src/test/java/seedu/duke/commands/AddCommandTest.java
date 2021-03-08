@@ -4,12 +4,10 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.exceptions.DuplicateModuleCodeException;
 import seedu.duke.module.ModuleList;
-import seedu.duke.ui.Ui;
+import seedu.duke.ui.UI;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,7 +25,7 @@ class AddModuleCommandTest {
 
         String moduleCode = "CS2113T";
         Command command = new AddModuleCommand(moduleCode);
-        command.execute(moduleList, new Ui());
+        command.execute(moduleList, new UI());
 
         String output = String.format(AddModuleCommand.MESSAGE_SUCCESS, moduleCode);
         assertEquals(output + System.lineSeparator(), outContent.toString());
@@ -42,7 +40,7 @@ class AddModuleCommandTest {
 
         String moduleCode = "CS2113T";
         AddModuleCommand command = new AddModuleCommand(moduleCode);
-        assertThrows(DuplicateModuleCodeException.class, () -> command.execute(moduleList, new Ui()));
+        assertThrows(DuplicateModuleCodeException.class, () -> command.execute(moduleList, new UI()));
 
     }
 

@@ -2,14 +2,14 @@ package seedu.duke.commands;
 
 import seedu.duke.common.Commands;
 import seedu.duke.module.ModuleList;
-import seedu.duke.ui.Ui;
+import seedu.duke.ui.UI;
 
 public class PrintHelpCommand extends Command {
 
     public static final String HELP_MESSAGE = getHelpMessage();
 
     @Override
-    public void execute(ModuleList modules, Ui ui) {
+    public void execute(ModuleList modules, UI ui) {
         System.out.println(getHelpMessage());
     }
 

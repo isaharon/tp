@@ -2,7 +2,7 @@ package seedu.duke.commands;
 
 import seedu.duke.exceptions.DuplicateModuleCodeException;
 import seedu.duke.module.ModuleList;
-import seedu.duke.ui.Ui;
+import seedu.duke.ui.UI;
 
 import static java.util.Objects.requireNonNull;
 
@@ -18,7 +18,7 @@ public class AddModuleCommand extends Command {
     }
 
     @Override
-    public void execute(ModuleList modules, Ui ui) throws DuplicateModuleCodeException {
+    public void execute(ModuleList modules, UI ui) throws DuplicateModuleCodeException {
         requireNonNull(modules);
 
         for (String moduleCode : modules.getModules()) {

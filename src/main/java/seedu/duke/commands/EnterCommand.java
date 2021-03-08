@@ -3,7 +3,7 @@ package seedu.duke.commands;
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.exceptions.InvalidModuleCodeException;
 import seedu.duke.module.ModuleList;
-import seedu.duke.ui.Ui;
+import seedu.duke.ui.UI;
 
 import static java.util.Objects.requireNonNull;
 
@@ -20,7 +20,7 @@ public class EnterModuleCommand extends Command {
     }
 
     @Override
-    public void execute(ModuleList modules, Ui ui) throws DukeException {
+    public void execute(ModuleList modules, UI ui) throws DukeException {
         requireNonNull(modules);
         if (!modules.getModules().contains(moduleCode)) {
             throw new InvalidModuleCodeException(String.format(MESSAGE_ERROR, moduleCode));

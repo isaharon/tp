@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.exceptions.InvalidModuleCodeException;
 import seedu.duke.module.ModuleList;
-import seedu.duke.ui.Ui;
+import seedu.duke.ui.UI;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -25,7 +25,7 @@ class EnterModuleCommandTest {
         modules.setModules(new ArrayList<>(Arrays.asList("CS2113T", "CS2102", "CS2105", "CS2106")));
 
         Command command = new EnterModuleCommand("CS2105");
-        command.execute(modules, new Ui());
+        command.execute(modules, new UI());
 
         String output = "Opening CS2105." + System.lineSeparator() + "<Placeholder for overview>";
         assertEquals(output + System.lineSeparator(), outContent.toString());
@@ -42,7 +42,7 @@ class EnterModuleCommandTest {
 
         Command command = new EnterModuleCommand("CS3235");
 
-        assertThrows(InvalidModuleCodeException.class, () -> command.execute(modules, new Ui()));
+        assertThrows(InvalidModuleCodeException.class, () -> command.execute(modules, new UI()));
 
         System.setOut(originalOut);
     }

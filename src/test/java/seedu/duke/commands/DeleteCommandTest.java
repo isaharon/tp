@@ -4,14 +4,11 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.module.ModuleList;
-import seedu.duke.ui.Ui;
+import seedu.duke.ui.UI;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,7 +29,7 @@ class DeleteModuleCommandTest {
         modules.addModule("CS2106");
 
         Command command = new DeleteModuleCommand();
-        command.execute(modules, new Ui());
+        command.execute(modules, new UI());
 
         String output = DeleteModuleCommand.MESSAGE_PROMPT1 + "\n"
                 + String.format(Messages.MESSAGE_LIST_ITEMS, 1, "CS2113T") + "\n"

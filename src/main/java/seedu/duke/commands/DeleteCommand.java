@@ -3,7 +3,7 @@ package seedu.duke.commands;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.module.ModuleList;
-import seedu.duke.ui.Ui;
+import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ public class DeleteModuleCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Removed %s from the module list.";
 
     @Override
-    public void execute(ModuleList modules, Ui ui) throws DukeException {
+    public void execute(ModuleList modules, UI ui) throws DukeException {
         requireNonNull(modules);
 
         firstStage(modules, ui);
@@ -34,7 +34,7 @@ public class DeleteModuleCommand extends Command {
      * @param modules list of modules
      * @param ui Ui object for printing
      */
-    private void firstStage(ModuleList modules, Ui ui) {
+    private void firstStage(ModuleList modules, UI ui) {
         String listMessage = MESSAGE_PROMPT1;
         for (String moduleCode : modules.getModules()) {
             int moduleNumber = modules.getModules().indexOf(moduleCode) + 1;
@@ -45,7 +45,7 @@ public class DeleteModuleCommand extends Command {
         ui.printMessage(listMessage + "\n\n" + MESSAGE_PROMPT2);
     }
 
-    private void secondStage(ModuleList modules, Ui ui) {
+    private void secondStage(ModuleList modules, UI ui) {
         // TODO Parser to validate list of integers. Assume input is valid for now.
         ArrayList<Integer> integers = ui.readIntegers();
         ArrayList<String> deletedModules = modules.deleteModules(integers);
