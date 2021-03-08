@@ -10,7 +10,7 @@ public class HelpCommand extends Command {
 
     @Override
     public void execute(ModuleList modules, UI ui) {
-        System.out.println(getHelpMessage());
+        ui.printMessage(HELP_MESSAGE);
     }
 
     @Override

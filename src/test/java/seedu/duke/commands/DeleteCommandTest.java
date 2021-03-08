@@ -31,14 +31,14 @@ class DeleteCommandTest {
         Command command = new DeleteCommand();
         command.execute(modules, new UI());
 
-        String output = DeleteCommand.MESSAGE_PROMPT1 + "\n"
+        String output = DeleteCommand.MESSAGE_PROMPT1
                 + String.format(Messages.MESSAGE_LIST_ITEMS, 1, "CS2113T") + "\n"
                 + String.format(Messages.MESSAGE_LIST_ITEMS, 2, "CS2101") + "\n"
                 + String.format(Messages.MESSAGE_LIST_ITEMS, 3, "CS2105") + "\n"
-                + String.format(Messages.MESSAGE_LIST_ITEMS, 4, "CS2106") + "\n" + "\n"
+                + String.format(Messages.MESSAGE_LIST_ITEMS, 4, "CS2106") + "\n\n"
                 + DeleteCommand.MESSAGE_PROMPT2 + System.lineSeparator();
-        output += String.format(DeleteCommand.MESSAGE_SUCCESS, "CS2113T") + System.lineSeparator()
-                + String.format(DeleteCommand.MESSAGE_SUCCESS, "CS2105");
+        output += String.format(DeleteCommand.MESSAGE_SUCCESS, "CS2113T") + "\n"
+                + String.format(DeleteCommand.MESSAGE_SUCCESS, "CS2105") + "\n";
 
         assertEquals(output + System.lineSeparator(), outContent.toString());
 

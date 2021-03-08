@@ -28,10 +28,10 @@ class ListCommandTest {
         Command command = new ListCommand();
         command.execute(moduleList, new UI());
 
-        String output = ListCommand.MESSAGE_LIST + "\n";
+        String output = ListCommand.MESSAGE_LIST;
         output += String.format(Messages.MESSAGE_LIST_ITEMS, "1","CS2113T") + "\n";
         output += String.format(Messages.MESSAGE_LIST_ITEMS, "2","CS2105") + "\n";
-        output += String.format(Messages.MESSAGE_LIST_ITEMS, "3","CS2106");
+        output += String.format(Messages.MESSAGE_LIST_ITEMS, "3","CS2106") + "\n";
 
         assertEquals(output + System.lineSeparator(), outContent.toString());
 
