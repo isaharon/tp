@@ -2,13 +2,11 @@ package seedu.duke;
 
 import seedu.duke.parser.Parser;
 import seedu.duke.storage.Storage;
-import seedu.duke.ui.Ui;
-
-import java.util.ArrayList;
+import seedu.duke.ui.UI;
 
 public class Duke {
 
-    private static final Ui ui = new Ui();
+    private static final UI ui = new UI();
     private static final Storage storage = new Storage();
     private static final Parser parser = new Parser();
 
