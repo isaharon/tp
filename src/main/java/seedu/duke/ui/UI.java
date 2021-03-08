@@ -3,7 +3,7 @@ package seedu.duke.ui;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Ui {
+public class UI {
     private final Scanner scanner = new Scanner(System.in);
 
     public String readUserInput() {

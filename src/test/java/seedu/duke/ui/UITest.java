@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UiTest {
+class UITest {
     @Test
     void readListOfIntegers_multipleIntegerInput_expectListOfIntegers() {
         String input = "1 2 3";
@@ -17,7 +17,7 @@ class UiTest {
         ByteArrayInputStream inContent = new ByteArrayInputStream(input.getBytes());
         System.setIn(inContent);
 
-        Ui ui = new Ui();
+        UI ui = new UI();
         ArrayList<Integer> actual = ui.readIntegers();
 
         ArrayList<Integer> listOfIntegers = new ArrayList<>(List.of(1, 2, 3));
