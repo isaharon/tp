@@ -1,14 +1,12 @@
 package seedu.duke.module;
 
-import seedu.duke.storage.Storage;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class ModuleList {
 
     private ArrayList<String> modules;
-    private static Module selectedModule;
+    public static Module selectedModule = null;
 
     public ModuleList() {
         this.modules = new ArrayList<>();
@@ -43,6 +41,7 @@ public class ModuleList {
 
     public static void setSelectedModule(String name) {
         //selectedModule = storage.loadModule(name);
+        selectedModule = new Module(name);
     }
 
     public static void reset() {
