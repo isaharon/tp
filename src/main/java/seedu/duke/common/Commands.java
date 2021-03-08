@@ -12,8 +12,8 @@ public enum Commands {
     private final String word;
     private final String description;
 
-    Commands(String type, String description) {
-        this.word = type;
+    Commands(String word, String description) {
+        this.word = word;
         this.description = description;
     }
 
