@@ -1,8 +1,7 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.exceptions.DukeException;
-import seedu.duke.exceptions.InvalidModuleCodeException;
+import seedu.duke.exceptions.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
@@ -13,18 +12,18 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class EnterModuleCommandTest {
+class EnterCommandTest {
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Test
-    void execute_validModuleCodeInput_expectSuccess() throws DukeException {
+    void execute_validModuleCodeInput_expectSuccess() throws CommandException {
         System.setOut(new PrintStream(outContent));
 
         ModuleList modules = new ModuleList();
         modules.setModules(new ArrayList<>(Arrays.asList("CS2113T", "CS2102", "CS2105", "CS2106")));
 
-        Command command = new EnterModuleCommand("CS2105");
+        Command command = new EnterCommand("CS2105");
         command.execute(modules, new UI());
 
         String output = "Opening CS2105." + System.lineSeparator() + "<Placeholder for overview>";
@@ -34,21 +33,21 @@ class EnterModuleCommandTest {
     }
 
     @Test
-    void execute_invalidModuleCodeInput_expectException() throws DukeException {
+    void execute_invalidModuleCodeInput_expectException() throws CommandException {
         System.setOut(new PrintStream(outContent));
 
         ModuleList modules = new ModuleList();
         modules.setModules(new ArrayList<>(Arrays.asList("CS2113T", "CS2102", "CS2105", "CS2106")));
 
-        Command command = new EnterModuleCommand("CS3235");
+        Command command = new EnterCommand("CS3235");
 
-        assertThrows(InvalidModuleCodeException.class, () -> command.execute(modules, new UI()));
+        assertThrows(CommandException.class, () -> command.execute(modules, new UI()));
 
         System.setOut(originalOut);
     }
 
     @Test
     void isExit_singleInput_expectFalse() {
-        assertEquals(false, new EnterModuleCommand("CS2102").isExit());
+        assertEquals(false, new EnterCommand("CS2102").isExit());
     }
 }

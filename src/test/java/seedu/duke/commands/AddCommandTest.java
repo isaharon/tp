@@ -1,8 +1,7 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.exceptions.DukeException;
-import seedu.duke.exceptions.DuplicateModuleCodeException;
+import seedu.duke.exceptions.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
@@ -11,12 +10,12 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AddModuleCommandTest {
+class AddCommandTest {
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Test
-    void execute_uniqueModuleCode_expectPrintSuccess() throws DukeException {
+    void execute_uniqueModuleCode_expectPrintSuccess() throws CommandException {
         System.setOut(new PrintStream(outContent));
 
         ModuleList moduleList = new ModuleList();
@@ -24,10 +23,10 @@ class AddModuleCommandTest {
         moduleList.addModule("CS2106");
 
         String moduleCode = "CS2113T";
-        Command command = new AddModuleCommand(moduleCode);
+        Command command = new AddCommand(moduleCode);
         command.execute(moduleList, new UI());
 
-        String output = String.format(AddModuleCommand.MESSAGE_SUCCESS, moduleCode);
+        String output = String.format(AddCommand.MESSAGE_SUCCESS, moduleCode);
         assertEquals(output + System.lineSeparator(), outContent.toString());
 
         System.setOut(originalOut);
@@ -39,13 +38,13 @@ class AddModuleCommandTest {
         moduleList.addModule("CS2113T");
 
         String moduleCode = "CS2113T";
-        AddModuleCommand command = new AddModuleCommand(moduleCode);
-        assertThrows(DuplicateModuleCodeException.class, () -> command.execute(moduleList, new UI()));
+        AddCommand command = new AddCommand(moduleCode);
+        assertThrows(CommandException.class, () -> command.execute(moduleList, new UI()));
 
     }
 
     @Test
     void isExit_singleInput_expectReturnFalse() {
-        assertEquals(false, new AddModuleCommand("CS2113T").isExit());
+        assertEquals(false, new AddCommand("CS2113T").isExit());
     }
 }

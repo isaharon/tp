@@ -4,7 +4,7 @@ import seedu.duke.common.Commands;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
-public class PrintHelpCommand extends Command {
+public class HelpCommand extends Command {
 
     public static final String HELP_MESSAGE = getHelpMessage();
 

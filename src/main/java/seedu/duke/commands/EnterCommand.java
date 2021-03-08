@@ -1,13 +1,12 @@
 package seedu.duke.commands;
 
-import seedu.duke.exceptions.DukeException;
-import seedu.duke.exceptions.InvalidModuleCodeException;
+import seedu.duke.exceptions.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 import static java.util.Objects.requireNonNull;
 
-public class EnterModuleCommand extends Command {
+public class EnterCommand extends Command {
 
     public static final String MESSAGE_INFO = "Opening %s.";
     public static final String MESSAGE_OVERVIEW = "<Placeholder for overview>";
@@ -15,15 +14,15 @@ public class EnterModuleCommand extends Command {
 
     private final String moduleCode;
 
-    public EnterModuleCommand(String moduleCode) {
+    public EnterCommand(String moduleCode) {
         this.moduleCode = moduleCode;
     }
 
     @Override
-    public void execute(ModuleList modules, UI ui) throws DukeException {
+    public void execute(ModuleList modules, UI ui) throws CommandException {
         requireNonNull(modules);
         if (!modules.getModules().contains(moduleCode)) {
-            throw new InvalidModuleCodeException(String.format(MESSAGE_ERROR, moduleCode));
+            throw new CommandException(String.format(MESSAGE_ERROR, moduleCode));
         }
         ui.printMessage(String.format(MESSAGE_INFO, moduleCode));
         ModuleList.setSelectedModule(moduleCode);

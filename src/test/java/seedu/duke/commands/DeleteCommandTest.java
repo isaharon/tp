@@ -2,7 +2,7 @@ package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.common.Messages;
-import seedu.duke.exceptions.DukeException;
+import seedu.duke.exceptions.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
@@ -12,10 +12,10 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DeleteModuleCommandTest {
+class DeleteCommandTest {
 
     @Test
-    void execute_validModuleNumbersInput_expectSuccess() throws DukeException {
+    void execute_validModuleNumbersInput_expectSuccess() throws CommandException {
         PrintStream originalOut = System.out;
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
@@ -28,17 +28,17 @@ class DeleteModuleCommandTest {
         modules.addModule("CS2105");
         modules.addModule("CS2106");
 
-        Command command = new DeleteModuleCommand();
+        Command command = new DeleteCommand();
         command.execute(modules, new UI());
 
-        String output = DeleteModuleCommand.MESSAGE_PROMPT1 + "\n"
+        String output = DeleteCommand.MESSAGE_PROMPT1 + "\n"
                 + String.format(Messages.MESSAGE_LIST_ITEMS, 1, "CS2113T") + "\n"
                 + String.format(Messages.MESSAGE_LIST_ITEMS, 2, "CS2101") + "\n"
                 + String.format(Messages.MESSAGE_LIST_ITEMS, 3, "CS2105") + "\n"
                 + String.format(Messages.MESSAGE_LIST_ITEMS, 4, "CS2106") + "\n" + "\n"
-                + DeleteModuleCommand.MESSAGE_PROMPT2 + System.lineSeparator();
-        output += String.format(DeleteModuleCommand.MESSAGE_SUCCESS, "CS2113T") + System.lineSeparator()
-                + String.format(DeleteModuleCommand.MESSAGE_SUCCESS, "CS2105");
+                + DeleteCommand.MESSAGE_PROMPT2 + System.lineSeparator();
+        output += String.format(DeleteCommand.MESSAGE_SUCCESS, "CS2113T") + System.lineSeparator()
+                + String.format(DeleteCommand.MESSAGE_SUCCESS, "CS2105");
 
         assertEquals(output + System.lineSeparator(), outContent.toString());
 
@@ -47,6 +47,6 @@ class DeleteModuleCommandTest {
 
     @Test
     void isExit_emptyInput_expectFalse() {
-        assertEquals(false, new DeleteModuleCommand().isExit());
+        assertEquals(false, new DeleteCommand().isExit());
     }
 }

@@ -1,6 +1,7 @@
 package seedu.duke.commands;
 
 import seedu.duke.common.Messages;
+import seedu.duke.exceptions.CommandException;
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 import static java.util.Objects.requireNonNull;
 
-public class DeleteModuleCommand extends Command {
+public class DeleteCommand extends Command {
 
     public static final String MESSAGE_PROMPT1 = "Which modules would you like to delete?";
     public static final String MESSAGE_PROMPT2 = "Please enter the indices of the modules you would like to delete.\n"
@@ -17,7 +18,7 @@ public class DeleteModuleCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Removed %s from the module list.";
 
     @Override
-    public void execute(ModuleList modules, UI ui) throws DukeException {
+    public void execute(ModuleList modules, UI ui) throws CommandException {
         requireNonNull(modules);
 
         firstStage(modules, ui);

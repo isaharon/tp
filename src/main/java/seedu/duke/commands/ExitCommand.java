@@ -1,14 +1,14 @@
 package seedu.duke.commands;
 
+import seedu.duke.common.Messages;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
-public class ExitProgramCommand extends Command {
-    public static final String MESSAGE_BYE = "Bye.";
+public class ExitCommand extends Command {
 
     @Override
     public void execute(ModuleList modules, UI ui) {
-        ui.printMessage(MESSAGE_BYE);
+        ui.printMessage(Messages.MESSAGE_EXIT);
     }
 
     @Override

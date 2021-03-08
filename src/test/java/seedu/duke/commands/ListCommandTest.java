@@ -2,6 +2,7 @@ package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.common.Messages;
+import seedu.duke.exceptions.CommandException;
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
@@ -11,12 +12,12 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ListModuleCommandTest {
+class ListCommandTest {
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Test
-    void execute_noInput_expectListAllModulesAdded() throws DukeException {
+    void execute_noInput_expectListAllModulesAdded() throws CommandException {
         System.setOut(new PrintStream(outContent));
 
         ModuleList moduleList = new ModuleList();
@@ -24,10 +25,10 @@ class ListModuleCommandTest {
         moduleList.addModule("CS2105");
         moduleList.addModule("CS2106");
 
-        Command command = new ListModuleCommand();
+        Command command = new ListCommand();
         command.execute(moduleList, new UI());
 
-        String output = ListModuleCommand.MESSAGE_LIST + "\n";
+        String output = ListCommand.MESSAGE_LIST + "\n";
         output += String.format(Messages.MESSAGE_LIST_ITEMS, "1","CS2113T") + "\n";
         output += String.format(Messages.MESSAGE_LIST_ITEMS, "2","CS2105") + "\n";
         output += String.format(Messages.MESSAGE_LIST_ITEMS, "3","CS2106");
@@ -39,6 +40,6 @@ class ListModuleCommandTest {
 
     @Test
     void isExit_noInput_expectFalse() {
-        assertEquals(false, new ListModuleCommand().isExit());
+        assertEquals(false, new ListCommand().isExit());
     }
 }
